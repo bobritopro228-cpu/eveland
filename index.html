@@ -7,39 +7,39 @@
 <title>Eveland — Minecraft Server</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 * {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    background: #101510;
-    color: white;
-    font-family: Arial, sans-serif;
+html {
+    scroll-behavior: smooth;
 }
 
-/* Верхняя панель */
+body {
+    margin: 0;
+    color: white;
+    font-family: Arial, sans-serif;
+    background: #101510;
+}
+
+/* ===== ШАПКА ===== */
 
 header {
     height: 70px;
-    background: #151b15;
-    border-bottom: 3px solid #303b30;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 7%;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+
+    background: #111711;
+    border-bottom: 4px solid #263326;
 }
 
 .logo {
-    font-family: 'Press Start 2P', monospace;
-    color: #62d84e;
-    font-size: 20px;
-    text-shadow: 3px 3px #172017;
+    font-size: 25px;
+    font-weight: 900;
+    color: #63e64d;
+    text-shadow: 3px 3px #162316;
 }
 
 nav a {
@@ -50,138 +50,214 @@ nav a {
 }
 
 nav a:hover {
-    color: #62d84e;
+    color: #63e64d;
 }
 
-/* Главный блок */
+/* ===== ГЛАВНЫЙ ЭКРАН ===== */
 
 .hero {
     min-height: 650px;
+    padding: 80px 20px;
+
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
     text-align: center;
 
+    /* ПИКСЕЛЬНЫЙ ФОН */
     background:
         linear-gradient(#071007aa, #071007ee),
-        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=90");
+        repeating-linear-gradient(
+            0deg,
+            #162416 0px,
+            #162416 40px,
+            #101b10 40px,
+            #101b10 80px
+        );
 
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* декоративные блоки */
+
+.hero::before {
+    content: "";
+    position: absolute;
+
+    width: 100%;
+    height: 180px;
+
+    left: 0;
+    bottom: 0;
+
+    background:
+        linear-gradient(
+            #4d9b38 0 20px,
+            #704c2a 20px 100%
+        );
+
+    image-rendering: pixelated;
+
+    opacity: .9;
 }
 
 .hero-content {
-    max-width: 850px;
-    padding: 30px;
+    position: relative;
+    z-index: 2;
 }
 
-.minecraft-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(38px, 8vw, 82px);
-    color: #68df50;
+/* название */
+
+.title {
+    font-size: clamp(45px, 10vw, 90px);
+    font-weight: 900;
+    letter-spacing: 5px;
+
+    color: #64e64f;
+
     text-shadow:
-        5px 5px #1c3519,
-        8px 8px #000;
-    margin-bottom: 30px;
+        5px 5px 0 #193719,
+        9px 9px 0 #000;
 }
+
+/* описание */
 
 .subtitle {
     font-size: 22px;
     color: #ddd;
-    margin-bottom: 35px;
+    margin: 20px 0 35px;
 }
 
-/* IP */
+/* ===== IP ===== */
 
 .ip-box {
     display: inline-flex;
-    align-items: center;
+    flex-direction: column;
     gap: 15px;
-    background: #171e17;
-    border: 3px solid #3d4c3d;
-    padding: 8px;
-    box-shadow: 0 7px 0 #080b08;
+
+    padding: 20px;
+
+    background: #151d15;
+
+    border: 4px solid #334533;
+
+    box-shadow:
+        0 8px 0 #080b08,
+        inset 0 0 20px #0005;
 }
 
 .ip {
     font-family: monospace;
-    font-size: 19px;
-    padding: 12px;
+    font-size: 21px;
+    letter-spacing: 1px;
 }
 
+/* кнопка */
+
 .copy-btn {
-    background: #4caf3c;
+    padding: 15px 25px;
+
+    border: 0;
+    border-bottom: 5px solid #287522;
+
+    background: #42c638;
+
     color: white;
-    border: 3px solid #2b7023;
-    padding: 13px 18px;
+
+    font-size: 17px;
     font-weight: bold;
+
     cursor: pointer;
-    box-shadow: 0 4px 0 #1d4b18;
 }
 
 .copy-btn:hover {
-    background: #5fc84d;
+    background: #55db49;
 }
 
-/* Статус */
+.copy-btn:active {
+    border-bottom: 2px solid #287522;
+    transform: translateY(3px);
+}
+
+/* статус */
 
 .status {
-    display: inline-block;
-    margin-top: 35px;
-    padding: 12px 20px;
-    background: #111711;
-    border: 2px solid #344034;
-}
+    margin-top: 25px;
 
-.online {
-    color: #55df4b;
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    background: #101710;
+
+    border: 2px solid #334333;
+
     font-weight: bold;
 }
 
-/* Секции */
+.online {
+    color: #57e94c;
+}
+
+/* ===== СЕКЦИИ ===== */
 
 section {
-    padding: 70px 7%;
+    padding: 75px 7%;
 }
 
 .section-title {
     text-align: center;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 25px;
+
+    font-size: 32px;
+    font-weight: 900;
+
     margin-bottom: 45px;
-    color: #72db59;
+
+    color: #65df51;
 }
 
-/* Карточки */
+/* ===== КАРТОЧКИ ===== */
 
 .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 20px;
     max-width: 1100px;
     margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(210px, 1fr));
+
+    gap: 22px;
 }
 
 .card {
-    background: #171e17;
-    border: 3px solid #364336;
     padding: 30px 20px;
+
     text-align: center;
-    box-shadow: 0 7px 0 #090c09;
-    transition: transform .2s;
+
+    background: #171f17;
+
+    border: 3px solid #354535;
+
+    box-shadow: 0 7px 0 #080b08;
+
+    transition: .2s;
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-7px);
+    border-color: #58c94a;
 }
 
 .icon {
-    font-size: 42px;
+    font-size: 45px;
 }
 
 .card h3 {
-    color: #6cdb55;
-    margin: 18px 0 10px;
+    color: #65df51;
+    margin-top: 18px;
 }
 
 .card p {
@@ -189,52 +265,36 @@ section {
     line-height: 1.5;
 }
 
-/* Донат */
+/* ===== НИЖНИЙ БЛОК ===== */
 
-.donate {
+.info {
     background: #0c110c;
 }
 
-.donate-card {
-    max-width: 300px;
-    margin: auto;
-    background: #171e17;
-    border: 3px solid #536753;
-    padding: 30px;
-    text-align: center;
-}
-
-.donate-card h3 {
-    color: #ffd34e;
-    font-size: 25px;
-}
-
-.price {
-    font-size: 30px;
-    font-weight: bold;
-    margin: 20px;
-}
-
-/* Футер */
+/* ===== FOOTER ===== */
 
 footer {
-    background: #080b08;
-    border-top: 3px solid #303a30;
-    text-align: center;
     padding: 35px 20px;
+
+    text-align: center;
+
+    background: #080b08;
+
+    border-top: 4px solid #263326;
+
     color: #777;
 }
 
 footer strong {
-    color: #62d84e;
+    color: #63e64d;
 }
 
-/* Телефон */
+/* ===== МОБИЛЬНЫЙ ===== */
 
 @media (max-width: 700px) {
 
     header {
-        padding: 0 20px;
+        justify-content: center;
     }
 
     nav {
@@ -242,29 +302,24 @@ footer strong {
     }
 
     .hero {
-        min-height: 570px;
+        min-height: 600px;
     }
 
-    .minecraft-title {
-        font-size: 42px;
+    .title {
+        font-size: 48px;
     }
 
     .subtitle {
-        font-size: 17px;
+        font-size: 18px;
     }
 
     .ip-box {
-        flex-direction: column;
         width: 100%;
         max-width: 350px;
     }
 
     .ip {
-        font-size: 16px;
-    }
-
-    .copy-btn {
-        width: 100%;
+        font-size: 17px;
     }
 
     section {
@@ -272,38 +327,43 @@ footer strong {
     }
 
     .section-title {
-        font-size: 20px;
-        line-height: 1.5;
+        font-size: 26px;
     }
 }
 </style>
 </head>
 
+
 <body>
 
+<!-- ===== ШАПКА ===== -->
+
 <header>
-    <div class="logo">EVELAND</div>
+
+    <div class="logo">
+        EVELAND
+    </div>
 
     <nav>
         <a href="#server">Сервер</a>
         <a href="#about">О сервере</a>
-        <a href="#donate">Донат</a>
     </nav>
+
 </header>
 
 
-<!-- ГЛАВНЫЙ ЭКРАН -->
+<!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
 
-<div class="hero">
+<section class="hero">
 
     <div class="hero-content">
 
-        <div class="minecraft-title">
+        <div class="title">
             EVELAND
         </div>
 
         <div class="subtitle">
-            Твой новый мир в Minecraft
+            Minecraft сервер • Выживание
         </div>
 
         <div class="ip-box">
@@ -312,11 +372,15 @@ footer strong {
                 185.9.145.83:25666
             </div>
 
-            <button class="copy-btn" onclick="copyIP()">
-                📋 СКОПИРОВАТЬ
+            <button
+                class="copy-btn"
+                onclick="copyIP()">
+                📋 СКОПИРОВАТЬ IP
             </button>
 
         </div>
+
+        <br>
 
         <div class="status">
             🟢 <span class="online">СЕРВЕР ONLINE</span>
@@ -324,63 +388,12 @@ footer strong {
 
     </div>
 
-</div>
-
-
-<!-- О СЕРВЕРЕ -->
-
-<section id="server">
-
-    <div class="section-title">
-        О СЕРВЕРЕ
-    </div>
-
-    <div class="cards">
-
-        <div class="card">
-            <div class="icon">🌲</div>
-            <h3>ВЫЖИВАНИЕ</h3>
-            <p>
-                Исследуй мир, строй свою базу
-                и развивайся вместе с игроками.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🌎</div>
-            <h3>БЕЗ ВАЙПОВ</h3>
-            <p>
-                Твой прогресс и постройки
-                не исчезнут после вайпа.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">⚔️</div>
-            <h3>PVP</h3>
-            <p>
-                Сражайся с другими игроками
-                и защищай свои территории.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">💰</div>
-            <h3>ЭКОНОМИКА</h3>
-            <p>
-                Зарабатывай игровую валюту,
-                покупай предметы и развивайся.
-            </p>
-        </div>
-
-    </div>
-
 </section>
 
 
-<!-- ИНФОРМАЦИЯ -->
+<!-- ===== СЕРВЕР ===== -->
 
-<section id="about">
+<section id="server">
 
     <div class="section-title">
         EVELAND
@@ -389,21 +402,58 @@ footer strong {
     <div class="cards">
 
         <div class="card">
-            <div class="icon">🎮</div>
-            <h3>ВЕРСИЯ</h3>
-            <p>1.21.1</p>
+
+            <div class="icon">🌲</div>
+
+            <h3>ВЫЖИВАНИЕ</h3>
+
+            <p>
+                Развивайся, строй базы,
+                исследуй мир и играй с друзьями.
+            </p>
+
         </div>
 
-        <div class="card">
-            <div class="icon">🛡️</div>
-            <h3>РЕЖИМ</h3>
-            <p>Survival</p>
-        </div>
 
         <div class="card">
-            <div class="icon">🌐</div>
-            <h3>JAVA + BEDROCK</h3>
-            <p>Играй с разных устройств.</p>
+
+            <div class="icon">🌎</div>
+
+            <h3>БЕЗ ВАЙПОВ</h3>
+
+            <p>
+                Мир и твои постройки
+                сохраняются.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">⚔️</div>
+
+            <h3>PVP</h3>
+
+            <p>
+                Сражайся с другими игроками
+                и защищай свои территории.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💰</div>
+
+            <h3>ЭКОНОМИКА</h3>
+
+            <p>
+                Зарабатывай игровую валюту
+                и покупай предметы.
+            </p>
+
         </div>
 
     </div>
@@ -411,33 +461,60 @@ footer strong {
 </section>
 
 
-<!-- ДОНАТ -->
+<!-- ===== ИНФОРМАЦИЯ ===== -->
 
-<section class="donate" id="donate">
+<section class="info" id="about">
 
     <div class="section-title">
-        ДОНАТ
+        ИНФОРМАЦИЯ
     </div>
 
-    <div class="donate-card">
+    <div class="cards">
 
-        <div class="icon">💎</div>
+        <div class="card">
 
-        <h3>ПРИВИЛЕГИИ</h3>
+            <div class="icon">🎮</div>
 
-        <p>
-            Поддержи сервер и получи
-            дополнительные возможности.
-        </p>
+            <h3>ВЕРСИЯ</h3>
 
-        <div class="price">
-            Скоро
+            <p>
+                Minecraft 1.21.1
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🛡️</div>
+
+            <h3>РЕЖИМ</h3>
+
+            <p>
+                Survival
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌐</div>
+
+            <h3>JAVA + BEDROCK</h3>
+
+            <p>
+                Играй с разных устройств.
+            </p>
+
         </div>
 
     </div>
 
 </section>
 
+
+<!-- ===== FOOTER ===== -->
 
 <footer>
 
@@ -462,9 +539,11 @@ footer strong {
 
 function copyIP() {
 
-    navigator.clipboard.writeText("185.9.145.83:25666");
+    navigator.clipboard.writeText(
+        "185.9.145.83:25666"
+    );
 
-    alert("IP сервера скопирован!");
+    alert("IP скопирован!");
 
 }
 
