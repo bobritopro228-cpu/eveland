@@ -1,163 +1,473 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eveland — Minecraft Server</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>Eveland — Minecraft Server</title>
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0b0f14;
-            color: white;
-            text-align: center;
-        }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-        header {
-            padding: 20px;
-            background: #111820;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        header h2 {
-            margin: 0;
-            color: #4ade80;
-        }
+body {
+    margin: 0;
+    background: #101510;
+    color: white;
+    font-family: Arial, sans-serif;
+}
 
-        .hero {
-            min-height: 80vh;
-            padding: 100px 20px;
-            background: linear-gradient(#0008, #000b),
-                        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80")
-                        center/cover;
-        }
+/* Верхняя панель */
 
-        .hero h1 {
-            font-size: 60px;
-            margin: 20px 0;
-            color: #4ade80;
-        }
+header {
+    height: 70px;
+    background: #151b15;
+    border-bottom: 3px solid #303b30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
-        .hero p {
-            font-size: 20px;
-            color: #ddd;
-        }
+.logo {
+    font-family: 'Press Start 2P', monospace;
+    color: #62d84e;
+    font-size: 20px;
+    text-shadow: 3px 3px #172017;
+}
 
-        .ip {
-            display: inline-block;
-            margin: 30px 0;
-            padding: 15px 20px;
-            background: #141c25;
-            border-radius: 10px;
-            font-size: 18px;
-        }
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+}
 
-        button {
-            border: 0;
-            padding: 14px 25px;
-            border-radius: 8px;
-            background: #22c55e;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+nav a:hover {
+    color: #62d84e;
+}
 
-        .cards {
-            padding: 50px 20px;
-        }
+/* Главный блок */
 
-        .cards h2 {
-            font-size: 32px;
-        }
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 
-        .card {
-            display: inline-block;
-            width: 220px;
-            margin: 10px;
-            padding: 25px;
-            background: #141c25;
-            border-radius: 12px;
-        }
+    background:
+        linear-gradient(#071007aa, #071007ee),
+        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=90");
 
-        .card h3 {
-            color: #4ade80;
-        }
+    background-size: cover;
+    background-position: center;
+}
 
-        footer {
-            padding: 25px;
-            background: #080b0f;
-            color: #888;
-        }
+.hero-content {
+    max-width: 850px;
+    padding: 30px;
+}
 
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 42px;
-            }
+.minecraft-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(38px, 8vw, 82px);
+    color: #68df50;
+    text-shadow:
+        5px 5px #1c3519,
+        8px 8px #000;
+    margin-bottom: 30px;
+}
 
-            .card {
-                width: 90%;
-            }
-        }
-    </style>
+.subtitle {
+    font-size: 22px;
+    color: #ddd;
+    margin-bottom: 35px;
+}
+
+/* IP */
+
+.ip-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: #171e17;
+    border: 3px solid #3d4c3d;
+    padding: 8px;
+    box-shadow: 0 7px 0 #080b08;
+}
+
+.ip {
+    font-family: monospace;
+    font-size: 19px;
+    padding: 12px;
+}
+
+.copy-btn {
+    background: #4caf3c;
+    color: white;
+    border: 3px solid #2b7023;
+    padding: 13px 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #1d4b18;
+}
+
+.copy-btn:hover {
+    background: #5fc84d;
+}
+
+/* Статус */
+
+.status {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 12px 20px;
+    background: #111711;
+    border: 2px solid #344034;
+}
+
+.online {
+    color: #55df4b;
+    font-weight: bold;
+}
+
+/* Секции */
+
+section {
+    padding: 70px 7%;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 25px;
+    margin-bottom: 45px;
+    color: #72db59;
+}
+
+/* Карточки */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.card {
+    background: #171e17;
+    border: 3px solid #364336;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 7px 0 #090c09;
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.icon {
+    font-size: 42px;
+}
+
+.card h3 {
+    color: #6cdb55;
+    margin: 18px 0 10px;
+}
+
+.card p {
+    color: #aaa;
+    line-height: 1.5;
+}
+
+/* Донат */
+
+.donate {
+    background: #0c110c;
+}
+
+.donate-card {
+    max-width: 300px;
+    margin: auto;
+    background: #171e17;
+    border: 3px solid #536753;
+    padding: 30px;
+    text-align: center;
+}
+
+.donate-card h3 {
+    color: #ffd34e;
+    font-size: 25px;
+}
+
+.price {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+/* Футер */
+
+footer {
+    background: #080b08;
+    border-top: 3px solid #303a30;
+    text-align: center;
+    padding: 35px 20px;
+    color: #777;
+}
+
+footer strong {
+    color: #62d84e;
+}
+
+/* Телефон */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 570px;
+    }
+
+    .minecraft-title {
+        font-size: 42px;
+    }
+
+    .subtitle {
+        font-size: 17px;
+    }
+
+    .ip-box {
+        flex-direction: column;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .ip {
+        font-size: 16px;
+    }
+
+    .copy-btn {
+        width: 100%;
+    }
+
+    section {
+        padding: 55px 20px;
+    }
+
+    .section-title {
+        font-size: 20px;
+        line-height: 1.5;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h2>EVELAND</h2>
+    <div class="logo">EVELAND</div>
+
+    <nav>
+        <a href="#server">Сервер</a>
+        <a href="#about">О сервере</a>
+        <a href="#donate">Донат</a>
+    </nav>
 </header>
 
-<section class="hero">
-    <h1>EVELAND</h1>
 
-    <p>Minecraft сервер с режимом выживания</p>
+<!-- ГЛАВНЫЙ ЭКРАН -->
 
-    <div class="ip">
-        185.9.145.83:25666
-        <br><br>
-        <button onclick="copyIP()">Скопировать IP</button>
+<div class="hero">
+
+    <div class="hero-content">
+
+        <div class="minecraft-title">
+            EVELAND
+        </div>
+
+        <div class="subtitle">
+            Твой новый мир в Minecraft
+        </div>
+
+        <div class="ip-box">
+
+            <div class="ip">
+                185.9.145.83:25666
+            </div>
+
+            <button class="copy-btn" onclick="copyIP()">
+                📋 СКОПИРОВАТЬ
+            </button>
+
+        </div>
+
+        <div class="status">
+            🟢 <span class="online">СЕРВЕР ONLINE</span>
+        </div>
+
     </div>
 
-    <br>
+</div>
 
-    <button>НАЧАТЬ ИГРАТЬ</button>
+
+<!-- О СЕРВЕРЕ -->
+
+<section id="server">
+
+    <div class="section-title">
+        О СЕРВЕРЕ
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🌲</div>
+            <h3>ВЫЖИВАНИЕ</h3>
+            <p>
+                Исследуй мир, строй свою базу
+                и развивайся вместе с игроками.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌎</div>
+            <h3>БЕЗ ВАЙПОВ</h3>
+            <p>
+                Твой прогресс и постройки
+                не исчезнут после вайпа.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚔️</div>
+            <h3>PVP</h3>
+            <p>
+                Сражайся с другими игроками
+                и защищай свои территории.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💰</div>
+            <h3>ЭКОНОМИКА</h3>
+            <p>
+                Зарабатывай игровую валюту,
+                покупай предметы и развивайся.
+            </p>
+        </div>
+
+    </div>
+
 </section>
 
-<section class="cards">
 
-    <h2>О сервере</h2>
+<!-- ИНФОРМАЦИЯ -->
 
-    <div class="card">
-        <h3>⚔️ Выживание</h3>
-        <p>Классическое выживание в Minecraft</p>
+<section id="about">
+
+    <div class="section-title">
+        EVELAND
     </div>
 
-    <div class="card">
-        <h3>🌎 Без вайпов</h3>
-        <p>Мир сервера сохраняется</p>
-    </div>
+    <div class="cards">
 
-    <div class="card">
-        <h3>🎮 Версия</h3>
-        <p>1.21.1</p>
+        <div class="card">
+            <div class="icon">🎮</div>
+            <h3>ВЕРСИЯ</h3>
+            <p>1.21.1</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🛡️</div>
+            <h3>РЕЖИМ</h3>
+            <p>Survival</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌐</div>
+            <h3>JAVA + BEDROCK</h3>
+            <p>Играй с разных устройств.</p>
+        </div>
+
     </div>
 
 </section>
+
+
+<!-- ДОНАТ -->
+
+<section class="donate" id="donate">
+
+    <div class="section-title">
+        ДОНАТ
+    </div>
+
+    <div class="donate-card">
+
+        <div class="icon">💎</div>
+
+        <h3>ПРИВИЛЕГИИ</h3>
+
+        <p>
+            Поддержи сервер и получи
+            дополнительные возможности.
+        </p>
+
+        <div class="price">
+            Скоро
+        </div>
+
+    </div>
+
+</section>
+
 
 <footer>
-    © 2026 Eveland
+
+    <strong>EVELAND</strong>
+
+    <p>
+        Minecraft Survival Server
+    </p>
+
+    <p>
+        185.9.145.83:25666
+    </p>
+
+    <p>
+        © 2026 Eveland
+    </p>
+
 </footer>
 
+
 <script>
+
 function copyIP() {
+
     navigator.clipboard.writeText("185.9.145.83:25666");
-    alert("IP скопирован!");
+
+    alert("IP сервера скопирован!");
+
 }
+
 </script>
 
 </body>
