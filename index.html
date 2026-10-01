@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Eveland — Minecraft Server</title>
+<title>EVELAND — Minecraft Server</title>
 
 <style>
 * {
@@ -17,29 +17,38 @@ html {
 
 body {
     margin: 0;
-    color: white;
+    color: #fff;
     font-family: Arial, sans-serif;
-    background: #101510;
+    background: #0b120c;
 }
 
-/* ===== ШАПКА ===== */
+/* ================= HEADER ================= */
 
 header {
-    height: 70px;
+    height: 76px;
+    padding: 0 7%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 7%;
 
-    background: #111711;
-    border-bottom: 4px solid #263326;
+    background: rgba(10, 17, 11, .96);
+    border-bottom: 3px solid #273a27;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-    font-size: 25px;
+    color: #63e64f;
+    font-size: 27px;
     font-weight: 900;
-    color: #63e64d;
-    text-shadow: 3px 3px #162316;
+    letter-spacing: 2px;
+
+    text-shadow:
+        3px 3px #142514,
+        5px 5px #000;
 }
 
 nav a {
@@ -50,14 +59,14 @@ nav a {
 }
 
 nav a:hover {
-    color: #63e64d;
+    color: #63e64f;
 }
 
-/* ===== ГЛАВНЫЙ ЭКРАН ===== */
+/* ================= HERO ================= */
 
 .hero {
-    min-height: 650px;
-    padding: 80px 20px;
+    min-height: 700px;
+    padding: 100px 20px 150px;
 
     display: flex;
     justify-content: center;
@@ -65,160 +74,216 @@ nav a:hover {
 
     text-align: center;
 
-    /* ПИКСЕЛЬНЫЙ ФОН */
-    background:
-        linear-gradient(#071007aa, #071007ee),
-        repeating-linear-gradient(
-            0deg,
-            #162416 0px,
-            #162416 40px,
-            #101b10 40px,
-            #101b10 80px
-        );
-
     position: relative;
     overflow: hidden;
-}
-
-/* декоративные блоки */
-
-.hero::before {
-    content: "";
-    position: absolute;
-
-    width: 100%;
-    height: 180px;
-
-    left: 0;
-    bottom: 0;
 
     background:
         linear-gradient(
-            #4d9b38 0 20px,
-            #704c2a 20px 100%
+            180deg,
+            #0b1720 0%,
+            #13251b 48%,
+            #1e351c 100%
         );
+}
+
+/* луна */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    top: 70px;
+    right: 12%;
+
+    width: 85px;
+    height: 85px;
+
+    background: #e9f0d0;
+
+    box-shadow:
+        0 0 35px #e9f0d066;
 
     image-rendering: pixelated;
+}
 
-    opacity: .9;
+/* земля */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 150px;
+
+    background:
+        linear-gradient(
+            #55a83b 0 22px,
+            #754b29 22px 100%
+        );
+
+    border-top: 5px solid #3d7f2c;
+
+    box-shadow:
+        inset 0 20px #6cc948;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+
+    max-width: 800px;
 }
 
-/* название */
+/* ================= TITLE ================= */
 
 .title {
-    font-size: clamp(45px, 10vw, 90px);
+    font-size: clamp(55px, 13vw, 105px);
+
     font-weight: 900;
     letter-spacing: 5px;
 
     color: #64e64f;
 
     text-shadow:
-        5px 5px 0 #193719,
-        9px 9px 0 #000;
+        6px 6px 0 #183818,
+        10px 10px 0 #050805;
+
+    animation: titleFloat 3s ease-in-out infinite;
 }
 
-/* описание */
+@keyframes titleFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
 
 .subtitle {
-    font-size: 22px;
-    color: #ddd;
-    margin: 20px 0 35px;
+    margin-top: 15px;
+
+    font-size: 23px;
+    color: #e2e2e2;
+
+    text-shadow: 2px 2px #000;
 }
 
-/* ===== IP ===== */
+/* ================= IP ================= */
 
 .ip-box {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 15px;
+    margin: 40px auto 0;
 
-    padding: 20px;
+    max-width: 500px;
 
-    background: #151d15;
+    padding: 25px;
 
-    border: 4px solid #334533;
+    background: rgba(10,18,11,.92);
+
+    border: 4px solid #334a34;
 
     box-shadow:
-        0 8px 0 #080b08,
-        inset 0 0 20px #0005;
+        0 10px 0 #070b07,
+        inset 0 0 30px #0008;
 }
 
 .ip {
     font-family: monospace;
-    font-size: 21px;
-    letter-spacing: 1px;
+
+    font-size: 23px;
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
 }
 
-/* кнопка */
-
 .copy-btn {
-    padding: 15px 25px;
+    width: 100%;
+
+    padding: 17px;
 
     border: 0;
-    border-bottom: 5px solid #287522;
+    border-bottom: 6px solid #267b20;
 
-    background: #42c638;
+    background: #45ce39;
 
     color: white;
 
-    font-size: 17px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 900;
 
     cursor: pointer;
+
+    transition: .15s;
 }
 
 .copy-btn:hover {
-    background: #55db49;
+    background: #59e34c;
+    transform: translateY(-2px);
 }
 
 .copy-btn:active {
-    border-bottom: 2px solid #287522;
     transform: translateY(3px);
+    border-bottom-width: 2px;
 }
 
-/* статус */
+/* ================= STATUS ================= */
 
 .status {
-    margin-top: 25px;
+    margin-top: 30px;
 
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
 
-    padding: 12px 20px;
+    padding: 16px 28px;
 
-    background: #101710;
+    background: #101910;
 
-    border: 2px solid #334333;
+    border: 3px solid #334633;
 
-    font-weight: bold;
+    box-shadow: 0 6px 0 #070a07;
+
+    font-weight: 900;
 }
 
-.online {
-    color: #57e94c;
+.dot {
+    width: 16px;
+    height: 16px;
+
+    background: #55e64a;
+
+    box-shadow:
+        0 0 12px #55e64a;
+
+    border-radius: 50%;
 }
 
-/* ===== СЕКЦИИ ===== */
+/* ================= SECTIONS ================= */
 
-section {
-    padding: 75px 7%;
+section:not(.hero) {
+    padding: 80px 7%;
 }
 
 .section-title {
     text-align: center;
 
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 900;
+
+    color: #63e64f;
 
     margin-bottom: 45px;
 
-    color: #65df51;
+    text-shadow:
+        3px 3px #162716,
+        5px 5px #000;
 }
 
-/* ===== КАРТОЧКИ ===== */
+/* ================= CARDS ================= */
 
 .cards {
     max-width: 1100px;
@@ -227,28 +292,39 @@ section {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(210px, 1fr));
+        repeat(auto-fit, minmax(220px, 1fr));
 
-    gap: 22px;
+    gap: 25px;
 }
 
 .card {
-    padding: 30px 20px;
+    padding: 30px 22px;
 
     text-align: center;
 
-    background: #171f17;
+    background:
+        linear-gradient(
+            145deg,
+            #182319,
+            #101710
+        );
 
-    border: 3px solid #354535;
+    border: 3px solid #344734;
 
-    box-shadow: 0 7px 0 #080b08;
+    box-shadow:
+        0 8px 0 #060906;
 
     transition: .2s;
 }
 
 .card:hover {
-    transform: translateY(-7px);
-    border-color: #58c94a;
+    transform: translateY(-8px);
+
+    border-color: #63d94f;
+
+    box-shadow:
+        0 12px 0 #060906,
+        0 0 25px #4bd83c22;
 }
 
 .icon {
@@ -256,42 +332,51 @@ section {
 }
 
 .card h3 {
-    color: #65df51;
-    margin-top: 18px;
+    color: #63e64f;
+
+    margin: 18px 0 10px;
+
+    font-size: 21px;
 }
 
 .card p {
     color: #aaa;
-    line-height: 1.5;
+
+    line-height: 1.6;
+
+    margin: 0;
 }
 
-/* ===== НИЖНИЙ БЛОК ===== */
+/* ================= ABOUT ================= */
 
-.info {
-    background: #0c110c;
+.about {
+    background: #0d150e;
+
+    border-top: 3px solid #1f3020;
+    border-bottom: 3px solid #1f3020;
 }
 
-/* ===== FOOTER ===== */
+/* ================= FOOTER ================= */
 
 footer {
-    padding: 35px 20px;
+    padding: 45px 20px;
 
     text-align: center;
 
-    background: #080b08;
-
-    border-top: 4px solid #263326;
+    background: #070b07;
 
     color: #777;
 }
 
 footer strong {
-    color: #63e64d;
+    color: #63e64f;
+
+    font-size: 25px;
 }
 
-/* ===== МОБИЛЬНЫЙ ===== */
+/* ================= MOBILE ================= */
 
-@media (max-width: 700px) {
+@media(max-width:700px) {
 
     header {
         justify-content: center;
@@ -302,41 +387,40 @@ footer strong {
     }
 
     .hero {
-        min-height: 600px;
+        min-height: 670px;
+        padding-top: 80px;
     }
 
     .title {
-        font-size: 48px;
+        font-size: 54px;
+        letter-spacing: 2px;
     }
 
     .subtitle {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .ip-box {
+        margin-top: 30px;
         width: 100%;
-        max-width: 350px;
     }
 
     .ip {
-        font-size: 17px;
+        font-size: 18px;
     }
 
-    section {
-        padding: 55px 20px;
+    section:not(.hero) {
+        padding: 65px 20px;
     }
 
     .section-title {
-        font-size: 26px;
+        font-size: 30px;
     }
 }
 </style>
 </head>
 
-
 <body>
-
-<!-- ===== ШАПКА ===== -->
 
 <header>
 
@@ -351,8 +435,6 @@ footer strong {
 
 </header>
 
-
-<!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
 
 <section class="hero">
 
@@ -372,18 +454,18 @@ footer strong {
                 185.9.145.83:25666
             </div>
 
-            <button
-                class="copy-btn"
-                onclick="copyIP()">
+            <button class="copy-btn" onclick="copyIP()">
                 📋 СКОПИРОВАТЬ IP
             </button>
 
         </div>
 
-        <br>
-
         <div class="status">
-            🟢 <span class="online">СЕРВЕР ONLINE</span>
+
+            <span class="dot"></span>
+
+            СЕРВЕР ONLINE
+
         </div>
 
     </div>
@@ -391,12 +473,10 @@ footer strong {
 </section>
 
 
-<!-- ===== СЕРВЕР ===== -->
-
 <section id="server">
 
     <div class="section-title">
-        EVELAND
+        О СЕРВЕРЕ
     </div>
 
     <div class="cards">
@@ -408,8 +488,8 @@ footer strong {
             <h3>ВЫЖИВАНИЕ</h3>
 
             <p>
-                Развивайся, строй базы,
-                исследуй мир и играй с друзьями.
+                Классическое выживание
+                в Minecraft.
             </p>
 
         </div>
@@ -422,7 +502,7 @@ footer strong {
             <h3>БЕЗ ВАЙПОВ</h3>
 
             <p>
-                Мир и твои постройки
+                Твои постройки и прогресс
                 сохраняются.
             </p>
 
@@ -436,8 +516,8 @@ footer strong {
             <h3>PVP</h3>
 
             <p>
-                Сражайся с другими игроками
-                и защищай свои территории.
+                Сражения игроков
+                и защита своих территорий.
             </p>
 
         </div>
@@ -450,8 +530,8 @@ footer strong {
             <h3>ЭКОНОМИКА</h3>
 
             <p>
-                Зарабатывай игровую валюту
-                и покупай предметы.
+                Торгуй, зарабатывай
+                и развивайся.
             </p>
 
         </div>
@@ -461,12 +541,10 @@ footer strong {
 </section>
 
 
-<!-- ===== ИНФОРМАЦИЯ ===== -->
-
-<section class="info" id="about">
+<section class="about" id="about">
 
     <div class="section-title">
-        ИНФОРМАЦИЯ
+        EVELAND
     </div>
 
     <div class="cards">
@@ -475,10 +553,10 @@ footer strong {
 
             <div class="icon">🎮</div>
 
-            <h3>ВЕРСИЯ</h3>
+            <h3>MINECRAFT</h3>
 
             <p>
-                Minecraft 1.21.1
+                Версия 1.21.1
             </p>
 
         </div>
@@ -488,10 +566,11 @@ footer strong {
 
             <div class="icon">🛡️</div>
 
-            <h3>РЕЖИМ</h3>
+            <h3>ВЫЖИВАНИЕ</h3>
 
             <p>
-                Survival
+                Развивайся и строй
+                свой собственный мир.
             </p>
 
         </div>
@@ -504,7 +583,8 @@ footer strong {
             <h3>JAVA + BEDROCK</h3>
 
             <p>
-                Играй с разных устройств.
+                Играй с компьютера
+                или телефона.
             </p>
 
         </div>
@@ -513,8 +593,6 @@ footer strong {
 
 </section>
 
-
-<!-- ===== FOOTER ===== -->
 
 <footer>
 
